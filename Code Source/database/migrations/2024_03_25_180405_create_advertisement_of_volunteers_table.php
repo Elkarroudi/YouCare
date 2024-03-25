@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('advertisement_of_volunteers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('type');
-            $table->rememberToken();
+            $table->foreignUuid('advertisement_id')->constrained('advertisements');
+            $table->foreignUuid('organizer_id')->constrained('organizers');
+            $table->string('status')->default('Pending');
 
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('advertisement_of_volunteers');
     }
 };
