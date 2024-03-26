@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\Authenticate;
+use App\Http\Controllers\Auth\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/register/organizer', [Registration::class, 'organizer']);
+Route::post('/register/volunteer', [Registration::class, 'volunteer']);
