@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\Authenticate;
 use App\Http\Controllers\Auth\Registration;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register/organizer', [Registration::class, 'organizer']);
-Route::post('/register/volunteer', [Registration::class, 'volunteer']);
+Route::middleware('guest')->group(function () {
+    Route::post('/v1/auth/register/organizer/', [Registration::class, 'organizer']);
+    Route::post('/v1/auth/register/volunteer/', [Registration::class, 'volunteer']);
+    Route::match(['GET', 'POST'],'/v1/auth/login/', [Authenticate::class, 'login'])->name('login');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/v1/auth/logout/', [Authenticate::class, 'logout']);
+    Route::post('/v1/auth/token/refresh/', [Authenticate::class, 'refresh']);
+});
+
