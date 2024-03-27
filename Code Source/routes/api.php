@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Authenticate;
 use App\Http\Controllers\Auth\Registration;
 use App\Http\Controllers\User\Helpers;
 use App\Http\Controllers\User\Volunteer;
+use App\Http\Controllers\Web\Website;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,5 +42,8 @@ Route::get('/v1/user/global/profile/', [Helpers::class, 'profile']);
 Route::post('/v1/user/global/password/update/', [Helpers::class, 'updatePassword']);
 
 Route::post('/v1/user/volunteer/advertisements/apply/{advertisement}/', [Volunteer::class, 'apply']);
+
+Route::get('/v1/website/advertisements/search/', [Website::class, 'advertisements']);
+Route::post('/v1/website/advertisements/search/', [Website::class, 'search']);
 
 

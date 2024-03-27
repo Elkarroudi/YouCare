@@ -28,4 +28,9 @@ class Organizer extends Model
             $model->id = Str::uuid();
         });
     }
+
+    public function Advertisement(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Advertisement::class);
+    }
 }

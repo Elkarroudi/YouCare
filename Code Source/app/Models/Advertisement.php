@@ -36,4 +36,9 @@ class Advertisement extends Model
             $model->id = Str::uuid();
         });
     }
+
+    public function Organizer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Organizer::class);
+    }
 }
