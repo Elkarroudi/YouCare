@@ -30,7 +30,7 @@ class Advertisements extends Controller
         try {
             $data = $this->validateAdvertisementData($request);
             $data['required_skills'] = json_encode($data['required_skills']);
-            $data['organizer_id'] = '4bd8b81d-3089-4b84-a83c-dc73a18fe860'; // Make it dynamic After
+            $data['organizer_id'] = '1302e97c-f440-4496-9a9a-d07908c9cb7a'; // Make it dynamic After
 
             $advertisement = Advertisement::create($data);
             return response()->json([

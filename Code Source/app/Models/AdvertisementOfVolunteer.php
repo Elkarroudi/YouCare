@@ -14,7 +14,7 @@ class AdvertisementOfVolunteer extends Model
 
     protected $fillable = [
         'advertisement_id',
-        'organizer_id',
+        'volunteer_id',
         'status',
     ];
 

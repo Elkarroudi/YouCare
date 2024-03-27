@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('advertisement_of_volunteers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('advertisement_id')->constrained('advertisements');
-            $table->foreignUuid('organizer_id')->constrained('organizers');
+            $table->foreignUuid('volunteer_id')->constrained('volunteers');
             $table->string('status')->default('Pending');
 
             $table->timestamps();
