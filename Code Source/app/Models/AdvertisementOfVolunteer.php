@@ -10,6 +10,8 @@ class AdvertisementOfVolunteer extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'advertisement_id',
         'organizer_id',

@@ -10,6 +10,8 @@ class Admin extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'user_id',
     ];

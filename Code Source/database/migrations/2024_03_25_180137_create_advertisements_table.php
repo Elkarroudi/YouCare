@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('localisation');
             $table->json('required_skills');
+            $table->string('status')->default('Pending');
 
             $table->timestamps();
             $table->softDeletes();
