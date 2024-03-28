@@ -4,6 +4,7 @@ use App\Http\Controllers\Advertisements;
 use App\Http\Controllers\Auth\Authenticate;
 use App\Http\Controllers\Auth\Registration;
 use App\Http\Controllers\User\Helpers;
+use App\Http\Controllers\User\Organizer;
 use App\Http\Controllers\User\Volunteer;
 use App\Http\Controllers\Web\Website;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,6 @@ Route::match(['GET', 'POST'],'/v1/auth/login/', [Authenticate::class, 'login'])-
 Route::post('/v1/auth/logout/', [Authenticate::class, 'logout']);
 Route::post('/v1/auth/token/refresh/', [Authenticate::class, 'refresh']);
 
-
 Route::get('/v1/advertisements/all/', [Advertisements::class, 'index']);
 Route::get('/v1/advertisements/{advertisement}/', [Advertisements::class, 'show']);
 Route::post('/v1/advertisements/new/', [Advertisements::class, 'create']);
@@ -37,7 +37,6 @@ Route::delete('/v1/advertisements/delete/force/{id}', [Advertisements::class, 'd
 Route::post('/v1/advertisements/delete/restore/{id}', [Advertisements::class, 'restore']);
 Route::put('/v1/advertisements/confirm/{advertisement}', [Advertisements::class, 'validateToShow']);
 
-
 Route::get('/v1/user/global/profile/', [Helpers::class, 'profile']);
 Route::post('/v1/user/global/password/update/', [Helpers::class, 'updatePassword']);
 
@@ -45,5 +44,11 @@ Route::post('/v1/user/volunteer/advertisements/apply/{advertisement}/', [Volunte
 
 Route::get('/v1/website/advertisements/search/', [Website::class, 'advertisements']);
 Route::post('/v1/website/advertisements/search/', [Website::class, 'search']);
+
+
+Route::get('/v1/user/organizer/statistic/', [Organizer::class, 'statistic']);
+Route::post('/v1/user/organizer/advertisements/applications/accept/{advertisementOfVolunteer}', [Organizer::class, 'acceptApplication']);
+Route::get('/v1/user/organizer/advertisements/applications/all/', [Organizer::class, 'getOrganizerVolunteers']);
+
 
 
